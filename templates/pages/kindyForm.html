@@ -3,12 +3,13 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     
-<title>{% block title %}Breast cancer{% endblock %}</title>
+<title>{% block title %}kindy{% endblock %}</title>
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
 
 <style>
 @import url('https://fonts.googleapis.com/css?family=Ubuntu');
@@ -85,7 +86,7 @@ body{
   position: absolute;
   top: 15px;
   left: 15px;
-  color: #9a99aa;
+  color: #e9e9e9;
 }
 
 .social-icons{
@@ -131,29 +132,39 @@ body{
 
 <script>function validateform(){
 
-var concave_points_mean=document.form1.Pregnancies.value;
-var area_mean=document.form1.Glucose.value;
-var radius_mean=document.form1.BloodPressure.value;
-var perimeter_mean=document.form1.BMI.value;
-var concavity_mean=document.form1.concavity_mean.value;
+var bp=document.form1.bp.value;
+var sg=document.form1.sg.value;
+var al=document.form1.al.value;
+var su=document.form1.su.value;
+var rbc=document.form1.rbc.value;
+var pc =document.form1.pc.value;
+var pcc =document.form1.pcc.value;
 
-if (concave_points_mean==null || concave_points_mean==""){
-  alert("concave points mean can't be blank");
+if (bp==null || bp==""){
+  alert("Blood pressure can't be blank");
   return false;
-}else if (area_mean==null || area_mean==""){
-  alert("area mean can't be blank");
-  return false;
-  }
-  else if (radius_mean==null || radius_mean==""){
-  alert("radius mean can't be blank");
+}else if (sg==null || sg==""){
+  alert("specific gravity can't be blank");
   return false;
   }
-  else if (perimeter_mean==null || perimeter_mean==""){
-  alert("perimeter mean can't be blank");
+  else if (al==null || al==""){
+  alert("albumin can't be blank");
   return false;
   }
-  else if (concavity_mean==null || concavity_mean==""){
-  alert("concavity mean can't be blank");
+  else if (su==null || su==""){
+  alert("sugar can't be blank");
+  return false;
+  }
+  else if (rbc==null || rbc==""){
+  alert("red blood cells can't be blank");
+  return false;
+  }
+  else if (pc==null || pc==""){
+  alert("pus cell can't be blank");
+  return false;
+  }
+  else if (pcc==null || pcc==""){
+  alert("pus cell clumps can't be blank");
   return false;
   }
    
@@ -171,28 +182,53 @@ if (concave_points_mean==null || concave_points_mean==""){
 
   <div class="form-dis">
     <div class="title">
-      <h1>Breast cancer Prediction</h1>
+      <h1>Kindy Prediction</h1>
       <h1><b>{{ result }}</b></h1>
-
     </div>
     <div class="form">
-  		<form id="form1" name="form1" method="post", action="/cancer_pre/" onsubmit=" return validateform()" >
+  		<form id="form1" name="form1" method="post", action="/kindy_pre/" onsubmit=" return validateform()" >
 
       <div class="form-items">
-        <input type="text" class="input" name="concave_points_mean" id="concave_points_mean" placeholder="concave points mean">
+        <input type="text" class="input" name="bp" id="bp" placeholder="blood pressure">
       </div>
-  		<div class="form-items">
-        <input type="text" class="input" name="area_mean" id="area_mean" placeholder="area mean">
+      <div class="form-items">
+        <input type="text" class="input" name="sg" id="sg" placeholder="specific gravity">
+
       </div>
-  		<div class="form-items">
-        <input type="text" class="input" name="radius_mean" id="radius_mean" placeholder="radius mean">
+      <div class="form-items">
+        <input type="text" class="input" name="al" id="al" placeholder="albumin">
         </div>
   		<div class="form-items">
-        <input type="text" class="input" name="perimeter_mean" id="perimeter_mean" placeholder="perimeter mean">
+        <input type="text" class="input" name="su" id="su" placeholder="Sugar">
       </div>
-  		<div class="form-items">
-        <input type="text" class="input" name="concavity_mean" id="concavity_mean" placeholder="concavity mean">
+      <div class="form-items">
+        <label for="rbc">Red blood cells</label>
+        <select class="input" id="rbc" name = "rbc" required="required">
+            <option value="1">abnormal</option>
+            <option value="0">normal</option>
+            
+          </select>          
+        </div>
+
+          
+        <div class="form-items">
+            <label for="pc">Pus cell</label>
+            <select class="input" id="pc" name = "pc" required="required">
+                <option value="1">abnormal</option>
+                <option value="0">normal</option>
+              </select>          
+            </div>
+            <div class="form-items">
+                <label for="pcc">Pus cell clumps</label>
+                <select class="input" id="pcc" name = "pcc" required="required">
+                    <option value="1">present</option>
+                    <option value="0">notpresent</option>
+                  </select>          
+                </div>
+
+        
     </div>
+
 <div align="center">
     <button type="submit" form="form1" value="Submit" class="btn">Submit<i class="fas fa-arrow-right">      </i>
 </button>
@@ -207,7 +243,6 @@ if (concave_points_mean==null || concave_points_mean==""){
    <br>
    <br>
    <br>
- <center><h1><b>Prediction:</b></h1><h1 color="red"><b>{{ result }}</b></h1>
 </center>
 
 	{% block content %}

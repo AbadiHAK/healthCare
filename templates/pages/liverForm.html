@@ -3,14 +3,13 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
-
-<title>{% block title %}Diabetes{% endblock %}</title>
+    
+<title>{% block title %}Liver{% endblock %}</title>
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
 
 <style>
 @import url('https://fonts.googleapis.com/css?family=Ubuntu');
@@ -87,7 +86,7 @@ body{
   position: absolute;
   top: 15px;
   left: 15px;
-  color: #9a99aa;
+  color: #e9e9e9;
 }
 
 .social-icons{
@@ -133,39 +132,39 @@ body{
 
 <script>function validateform(){
 
-var Pregnancies=document.form1.Pregnancies.value;
-var Glucose=document.form1.Glucose.value;
-var BloodPressure=document.form1.BloodPressure.value;
-var SkinThickness=document.form1.SkinThickness.value;
-var Insulin=document.form1.Insulin.value;
-var BMI=document.form1.BMI.value;
-var DiabetesPedigreeFunction=document.form1.DiabetesPedigreeFunction.value;
-var Age=document.form1.Age.value;
+var Total_Bilirubin=document.form1.Total_Bilirubin.value;
+var Direct_Bilirubin=document.form1.Direct_Bilirubin.value;
+var Alkaline_Phosphotase=document.form1.Alkaline_Phosphotase.value;
+var Alamine_Aminotransferase=document.form1.Alamine_Aminotransferase.value;
+var Total_Protiens=document.form1.Total_Protiens.value;
+var Albumin =document.form1.Albumin.value;
+var Albumin_and_Globulin_Ratio =document.form1.Albumin_and_Globulin_Ratio.value;
 
-if (Pregnancies==null || Pregnancies==""){
-  alert("Pregnancies can't be blank");
+if (Total_Bilirubin==null || Total_Bilirubin==""){
+  alert("Total Bilirubin can't be blank");
   return false;
-}else if (Glucose==null || Glucose==""){
-  alert("Glucose can't be blank");
-  return false;
-  }
-  else if (BloodPressure==null || BloodPressure==""){
-  alert("BloodPressure can't be blank");
+}else if (Direct_Bilirubin==null || Direct_Bilirubin==""){
+  alert("specific gravity can't be blank");
   return false;
   }
-  else if (SkinThickness==null || SkinThickness==""){
-  alert("SkinThickness can't be blank");
+  else if (Alkaline_Phosphotase==null || Alkaline_Phosphotase==""){
+  alert("Alkaline_Phosphotase can't be blank");
   return false;
   }
-  else if (Insulin==null || Insulin==""){
-  alert("Insulin can't be blank");
-  return false;
-  }  else if (BMI==null || BMI==""){
-  alert("BMI can't be blank");
+  else if (Alamine_Aminotransferase==null || Alamine_Aminotransferase==""){
+  alert("Alamine Aminotransferase can't be blank");
   return false;
   }
-  else if (DiabetesPedigreeFunction==null || DiabetesPedigreeFunction==""){
-  alert("DiabetesPedigreeFunction can't be blank");
+  else if (Total_Protiens==null || Total_Protiens==""){
+  alert("Total Protiens can't be blank");
+  return false;
+  }
+  else if (Albumin==null || Albumin==""){
+  alert("Albumin can't be blank");
+  return false;
+  }
+  else if (Albumin_and_Globulin_Ratio==null || Albumin_and_Globulin_Ratio==""){
+  alert("Albumin and Globulin Ratio can't be blank");
   return false;
   }
    
@@ -183,34 +182,37 @@ if (Pregnancies==null || Pregnancies==""){
 
   <div class="form-dis">
     <div class="title">
-      <h1>Diabetes Prediction</h1>
+      <h1>Liver Prediction</h1>
       <h1><b>{{ result }}</b></h1>
-
     </div>
     <div class="form">
-  		<form id="form1" name="form1" method="post", action="/diabetes_pre/" onsubmit=" return validateform()" >
+  		<form id="form1" name="form1" method="post", action="/liver_pre/" onsubmit=" return validateform()" >
 
       <div class="form-items">
-        <input type="text" class="input" name="Pregnancies" id="Pregnancies" placeholder="Pregnancies">
+        <input type="text" class="input" name="Total_Bilirubin" id="Total_Bilirubin" placeholder="Total Bilirubin">
       </div>
-  		<div class="form-items">
-        <input type="text" class="input" name="Glucose" id="Glucose" placeholder="Glucose">
+      <div class="form-items">
+        <input type="text" class="input" name="Direct_Bilirubin" id="Direct_Bilirubin" placeholder="Direct Bilirubin">
       </div>
-  		<div class="form-items">
-        <input type="text" class="input" name="BloodPressure" id="BloodPressure" placeholder="BloodPressure">
+      <div class="form-items">
+        <input type="text" class="input" name="Alkaline_Phosphotase" id="Alkaline_Phosphotase" placeholder="Alkaline Phosphotase">
+      </div>      <div class="form-items">
+        <input type="text" class="input" name="Alamine_Aminotransferase" id="Alamine_Aminotransferase" placeholder="Alamine Aminotransferase">
+      </div>      <div class="form-items">
+        <input type="text" class="input" name="Total_Protiens" id="Total_Protiens" placeholder="Total Protiens">
+      </div>      <div class="form-items">
+        <input type="text" class="input" name="Albumin" id="Albumin" placeholder="Albumin">
+      </div>      <div class="form-items">
+        <input type="text" class="input" name="Albumin_and_Globulin_Ratio" id="Albumin_and_Globulin_Ratio" placeholder="Albumin and Globulin Ratio">
+      </div>
 
-  		<div class="form-items">
-        <input type="text" class="input" name="BMI" id="BMI" placeholder="BMI">
-      </div>
-  		<div class="form-items">
-        <input type="text" class="input" name="DiabetesPedigreeFunction" id="DiabetesPedigreeFunction" placeholder="DiabetesPedigreeFunction">
-      </div>
-  		<div class="form-items">
-        <input type="text" class="input" name="Age" id="Age" placeholder="Age">
-      </div>
+
+          
 
 
+        
     </div>
+
 <div align="center">
     <button type="submit" form="form1" value="Submit" class="btn">Submit<i class="fas fa-arrow-right">      </i>
 </button>
@@ -225,7 +227,6 @@ if (Pregnancies==null || Pregnancies==""){
    <br>
    <br>
    <br>
- <center><h1><b>Prediction:</b></h1><h1 color="red"><b>{{ result }}</b></h1>
 </center>
 
 	{% block content %}
