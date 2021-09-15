@@ -1,260 +1,432 @@
 {% load static %}
 {% csrf_token %}
 <html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
 <head>
 
-    
-<title>{% block title %}Breast cancer{% endblock %}</title>
 
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+  <title>{% block title %}Heart cancer{% endblock %}</title>
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<style>
-@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Ubuntu');
 
-*{
-  margin: 0;
-  padding: 0;
-  font-family: 'Ubuntu', sans-serif;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: 'Ubuntu', sans-serif;
+    }
 
-body{
-  background: #008F8B;
-}
+    body {
+      background: #008F8B;
+    }
 
-.form-dis{
-  width: 500px;
-  background: #fff;
-  padding: 50px;
-  margin: 100px auto;
-  border-radius: 30px;
-  position: relative;
-}
+    .form-dis {
+      width: 500px;
+      background: #fff;
+      padding: 50px;
+      margin: 100px auto;
+      border-radius: 30px;
+      position: relative;
+    }
 
-.title h1{
-  color: #535274;
-  letter-spacing: 5px;
-  margin-bottom: 25px;
-  text-align: center;
-}
+    .title h1 {
+      color: #535274;
+      letter-spacing: 5px;
+      margin-bottom: 25px;
+      text-align: center;
+    }
 
-.form,
-.form-items{
-  width: 100%;
-}
+    .form,
+    .form-items {
+      width: 100%;
+    }
 
-.form-items .input{
-  width: 100%;
-  margin-bottom: 12px;
-  padding: 15px 40px;
-  box-sizing: border-box;
-  background: #ebeef1;
-  border: 0px;
-  outline: none;
-  border-radius: 30px;
-}
+    .form-items .input {
+      width: 100%;
+      margin-bottom: 12px;
+      padding: 15px 40px;
+      box-sizing: border-box;
+      background: #ebeef1;
+      border: 0px;
+      outline: none;
+      border-radius: 30px;
+    }
 
-.form-items .input.message{
-  height: 125px;
-  border-radius: 15px;
-  margin-bottom: 30px;
-  padding: 15px 15px;
-  resize: none;
-}
+    .form-items .input.message {
+      height: 125px;
+      border-radius: 15px;
+      margin-bottom: 30px;
+      padding: 15px 15px;
+      resize: none;
+    }
 
-.btn{
-  background: #008F8B;
-  text-align: center;
-  color: #fff;
-  padding: 12px;
-  border-radius: 25px;
-  cursor: pointer;
-}
+    .btn {
+      background: #008F8B;
+      text-align: center;
+      color: #fff;
+      padding: 12px;
+      border-radius: 25px;
+      cursor: pointer;
+    }
 
-.btn .fas{
-  margin-left: 10px;
-  font-size: 12px;
-}
+    .btn .fas {
+      margin-left: 10px;
+      font-size: 12px;
+    }
 
-.form-items{
-  position: relative;
-}
+    .form-items {
+      position: relative;
+    }
 
-.form-items .fas{
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  color: #e9e9e9;
-}
+    .form-items .fas {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      color: #e9e9e9;
+    }
 
-.social-icons{
-  position: absolute;
-  bottom: -25px;
-  left: 50%;
-  width: 200px;
-  transform: translateX(-50%);
-  display: flex;
-  justify-content: space-around;
-}
+    .social-icons {
+      position: absolute;
+      bottom: -25px;
+      left: 50%;
+      width: 200px;
+      transform: translateX(-50%);
+      display: flex;
+      justify-content: space-around;
+    }
 
-.social-icons div{
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  position: relative;
-  cursor: pointer;
-}
+    .social-icons div {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      position: relative;
+      cursor: pointer;
+    }
 
 
-.social-icons div .fab{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  color: #fff;
-}
+    .social-icons div .fab {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+    }
 
-.social-icons div.facebook{
-  background: #16C2D5;
-}
+    .social-icons div.facebook {
+      background: #16C2D5;
+    }
 
-.social-icons div.twitter{
-  background: #41caf6;
-}
+    .social-icons div.twitter {
+      background: #41caf6;
+    }
 
-.social-icons div.google{
-  background: #fb4f4f;
-}
+    .social-icons div.google {
+      background: #fb4f4f;
+    }
 
-</style>
+    h1 {
+      font-size: 30px;
+      color: #fff;
+      text-transform: uppercase;
+      font-weight: 300;
+      text-align: center;
+      margin-bottom: 15px;
+    }
 
-<script>function validateform(){
+    table {
+      width: 100%;
+      table-layout: fixed;
+    }
 
-var age=document.form1.age.value;
-var cp=document.form1.cp.value;
-var trestbps=document.form1.trestbps.value;
-var chol=document.form1.chol.value;
-var fbs=document.form1.fbs.value;
-var restecg =document.form1.restecg.value;
-var thalach =document.form1.thalach.value;
-var exang =document.form1.exang.value;
+    .tbl-header {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
 
-if (age==null || age==""){
-  alert("age can't be blank");
-  return false;
-}else if (cp==null || cp==""){
-  alert("cp can't be blank");
-  return false;
-  }
-  else if (trestbps==null || trestbps==""){
-  alert("trestbps can't be blank");
-  return false;
-  }
-  else if (chol==null || chol==""){
-  alert("perimeter can't be blank");
-  return false;
-  }
-  else if (fbs==null || fbs==""){
-  alert("fbs can't be blank");
-  return false;
-  }
-  else if (restecg==null || restecg==""){
-  alert("fbs can't be blank");
-  return false;
-  }
-  else if (thalach==null || thalach==""){
-  alert("thalach can't be blank");
-  return false;
-  }
-  else if (exang==null || exang==""){
-  alert("exang can't be blank");
-  return false;
-  }
-   
-}  
-</script>
-<header>
-  {% include 'pages/navbar.html' %}
+    .tbl-content {
+      height: 120px;
+      overflow-x: auto;
+      margin-top: 0px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
 
-</header>
+    th {
+      padding: 20px 15px;
+      text-align: left;
+      font-weight: 500;
+      font-size: 12px;
+      color: #fff;
+      text-transform: uppercase;
+    }
+
+    td {
+      padding: 15px;
+      text-align: left;
+      vertical-align: middle;
+      font-weight: 300;
+      font-size: 12px;
+      color: #fff;
+      border-bottom: solid 1px rgba(255, 255, 255, 0.1);
+    }
+
+
+    /* demo styles */
+
+    @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+
+    body {
+      background: -webkit-linear-gradient(left, #25c481, #25b7c4);
+      background: linear-gradient(to right, #25c481, #25b7c4);
+      font-family: 'Roboto', sans-serif;
+    }
+
+    section {
+      margin: 50px;
+    }
+
+
+    /* follow me template */
+    .made-with-love {
+      margin-top: 40px;
+      padding: 10px;
+      clear: left;
+      text-align: center;
+      font-size: 10px;
+      font-family: arial;
+      color: #fff;
+    }
+
+    .made-with-love i {
+      font-style: normal;
+      color: #F50057;
+      font-size: 14px;
+      position: relative;
+      top: 2px;
+    }
+
+    .made-with-love a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .made-with-love a:hover {
+      text-decoration: underline;
+    }
+
+
+    /* for custom scrollbar for webkit browser*/
+
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    }
+  </style>
+
+  <script>function validateform() {
+
+      var age = document.form1.age.value;
+      var cp = document.form1.cp.value;
+      var trestbps = document.form1.trestbps.value;
+      var chol = document.form1.chol.value;
+      var fbs = document.form1.fbs.value;
+      var restecg = document.form1.restecg.value;
+      var thalach = document.form1.thalach.value;
+      var exang = document.form1.exang.value;
+
+      if (age == null || age == "") {
+        alert("age can't be blank");
+        return false;
+      } else if (cp == null || cp == "") {
+        alert("cp can't be blank");
+        return false;
+      }
+      else if (trestbps == null || trestbps == "") {
+        alert("trestbps can't be blank");
+        return false;
+      }
+      else if (chol == null || chol == "") {
+        alert("perimeter can't be blank");
+        return false;
+      }
+      else if (fbs == null || fbs == "") {
+        alert("fbs can't be blank");
+        return false;
+      }
+      else if (restecg == null || restecg == "") {
+        alert("fbs can't be blank");
+        return false;
+      }
+      else if (thalach == null || thalach == "") {
+        alert("thalach can't be blank");
+        return false;
+      }
+      else if (exang == null || exang == "") {
+        alert("exang can't be blank");
+        return false;
+      }
+
+    }
+  </script>
+  <header>
+    {% include 'pages/navbar.html' %}
+
+  </header>
 
 </head>
+
 <body>
+  <section>
+    <!--for demo wrap-->
+    <h1>Example data for test</h1>
+    <div class="tbl-header">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <thead>
+          <tr>
+            <th>Age</th>
+            <th>Chest Pain Type</th>
+            <th>Resting Blood Pressure (mm Hg)</th>
+            <th>Serum Cholestoral in mg/dl</th>
+            <th>Fasting Blood Sugar</th>
+            <th>Resting Electro-cardiographic Result</th>
+            <th>Maximum Heart Rate Achieved</th>
+            <th>Exercise induced angina</th>
+            <th>sick</th>
+
+
+
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <div class="tbl-content">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tbody>
+          <tr>
+            <td>63</td>
+            <td>non-anginal pain</td>
+            <td>145</td>
+            <td>233</td>
+            <td>fasting blood sugar > 120 mg/dl</td>
+            <td>Normal</td>
+            <td>150</td>
+            <td>No</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>61</td>
+            <td>Typical Angina</td>
+            <td>133</td>
+            <td>330</td>
+            <td>fasting blood sugar < 120 mg/dl</td>
+            <td>Normal</td>
+            <td>169</td>
+            <td>No</td>
+            <td>No</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
 
 
 
   <div class="form-dis">
     <div class="title">
       <h1>Heart Prediction</h1>
-      <h1><b>{{ result }}</b></h1>
+      </h1>
+      <h1><b>{{result}}</b></h1>
+      <h1><b><a href="https://www.moh.gov.sa/eServices/interactive-maps/Pages/default.aspx#/"> Nearby Hospitals</a></b>
+
     </div>
     <div class="form">
-  		<form id="form1" name="form1" method="post", action="/heart_pre/" onsubmit=" return validateform()" >
+      <form id="form1" name="form1" method="post" , action="/heart_pre/" onsubmit=" return validateform()">
 
-      <div class="form-items">
-        <input type="text" class="input" name="age" id="age" placeholder="age">
-      </div>
-  		<div class="form-items">
-                <select class="input" id="cp" name = "cp" required="required" placeholder="Chest Pain Type">
-                  <option value="1">Typical Angina</option>
-                  <option value="2">Atypical Angina</option>
-                  <option value="3">Non-Anginal Pain</option>
-                  <option value="4">Asymptomatic</option>
-                </select>
-      </div>
-  		<div class="form-items">
-        <input type="text" class="input" name="trestbps" id="trestbps" placeholder="Resting Blood Pressure (mm Hg)">
-        </div>
-  		<div class="form-items">
-        <input type="text" class="input" name="chol" id="chol" placeholder="Serum Cholestoral in mg/dl">
-      </div>
-  		<div class="form-items">
-            <select class="input" id="fbs" name = "fbs" required="required" placeholder="Fasting Blood Sugar">
-              <option value="0">Fasting Blood Sugar < 120 mg/dl</option>
-              <option value="1">Fasting Blood Sugar > 120 mg/dl</option>
-            </select>
-    </div>
         <div class="form-items">
-            <select class="input" type="number" id="restecg" name="restecg" required="required" placeholder="Resting Electro-cardiographic Result">
+          <input type="text" class="input" name="age" id="age" placeholder="age">
+        </div>
+        <div class="form-items">
+          <label for="cp">Chest Pain Type</label>
+
+          <select class="input" id="cp" name="cp" required="required" placeholder="Chest Pain Type">
+            <option value="1">Typical Angina</option>
+            <option value="2">Atypical Angina</option>
+            <option value="3">Non-Anginal Pain</option>
+            <option value="4">Asymptomatic</option>
+          </select>
+        </div>
+        <div class="form-items">
+          <input type="text" class="input" name="trestbps" id="trestbps" placeholder="Resting Blood Pressure (mm Hg)">
+        </div>
+        <div class="form-items">
+          <input type="text" class="input" name="chol" id="chol" placeholder="Serum Cholestoral in mg/dl">
+        </div>
+        <div class="form-items">
+          <label for="fbs">Fasting Blood Sugar</label>
+
+          <select class="input" id="fbs" name="fbs" required="required" placeholder="Fasting Blood Sugar">
+            <option value="0">Fasting Blood Sugar < 120 mg/dl</option>
+            <option value="1">Fasting Blood Sugar > 120 mg/dl</option>
+          </select>
+        </div>
+        <div class="form-items">
+          <label for="restecg">Resting Electro-cardiographic Result</label>
+          <select class="input" type="number" id="restecg" name="restecg" required="required"
+            placeholder="Resting Electro-cardiographic Result">
             <option value="0">Normal</option>
             <option value="1">having ST-T wave abnormality</option>
             <option value="2">showing probable or definite left ventricular hypertrophy</option>
-            </select>
-      </div>
-          <div class="form-items">
-            <input type="text" class="input" name="thalach" id="thalach" placeholder="Maximum Heart Rate Achieved">
-          </div>
-          <div class="form-items">
-            <select class="input" id="exang" name = "exang" required="required" >
-              
-                <option value="1">Yes</option>
-                <option value="0">No</option>
-              </select>          
-            </div>
-        
+          </select>
+        </div>
+        <div class="form-items">
+          <input type="text" class="input" name="thalach" id="thalach" placeholder="Maximum Heart Rate Achieved">
+        </div>
+        <div class="form-items">
+          <label for="exang">Exercise induced angina</label>
+
+
+          <select class="input" id="exang" name="exang" required="required">
+
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+          </select>
+        </div>
+
     </div>
 
-<div align="center">
-    <button type="submit" form="form1" value="Submit" class="btn">Submit<i class="fas fa-arrow-right">      </i>
-</button>
+    <div align="center">
+      <button type="submit" form="form1" value="Submit" class="btn">Submit<i class="fas fa-arrow-right"> </i>
+      </button>
 
-    <button  type="reset" form="form1" value="reset" class="btn">Clear<i class="fas fa-arrow-right">     </i>
-</button>
-</div>
+      <button type="reset" form="form1" value="reset" class="btn">Clear<i class="fas fa-arrow-right"> </i>
+      </button>
+    </div>
 
 
 
-   <br>
-   <br>
-   <br>
-   <br>
-</center>
+    <br>
+    <br>
+    <br>
+    <br>
+    </center>
 
-	{% block content %}
+    {% block content %}
     {% endblock %}
+    
 
-
+    
 </body>
+
 </html>

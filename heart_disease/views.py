@@ -3,6 +3,8 @@ from django.shortcuts import render, redirect
 from django.template import loader
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
+import hyperlink
+
 
 # Create your views here.
 
@@ -32,9 +34,9 @@ def heart_pre(request):
 
 
     if outcome == 1:
-        result = "heart dis"
+        result = "We are sorry, but it seems that you have the disease, please go to the nearest hospital from here"
     elif outcome == 0:
-        result = "Does not have heart dis"
+        result = "Congratulations, you are not ill"
 
 
     return HttpResponse(template.render({'result':result}))
