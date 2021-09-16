@@ -1,2 +1,2 @@
-web: python manage.py collectstatic --no-input;
 web: gunicorn healthCareProject.wsgi
+web: gunicorn CCMS.wsgi --log-file -
