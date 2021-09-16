@@ -21,6 +21,9 @@ import cancer
 import heart_disease
 import kindy_disease
 import liver_disease
+from django.views.static import serve
+from django.conf.urls import url
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -36,6 +39,9 @@ urlpatterns = [
     path('kindy_pre/',kindy_disease.views.kindy_pre,name='kindypredicition'),
     path('liver/', include('liver_disease.urls')),
     path('liver_pre/',liver_disease.views.liver_pre,name='liverpredicition'),
+    url(r'^media/(?P<path>.*)$', serve,{'document_root':       settings.MEDIA_ROOT}), 
+    url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}), 
+
 
 
 
